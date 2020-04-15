@@ -8,8 +8,8 @@ module.exports = (api, options) => {
   api.configureDevServer((app, server) => {
     const prefix = mockOptions.prefix || '/mock';
 
-    app.use(express.json());
-    app.use(express.urlencoded({ extended: true }));
+    app.use(prefix, express.json());
+    app.use(prefix, express.urlencoded({ extended: true }));
 
     app.use(prefix, require('./lib/mock')(api, mockOptions));
   });
